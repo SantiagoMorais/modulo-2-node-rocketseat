@@ -22,8 +22,7 @@ export default [
     },
     rules: {
       "@typescript-eslint/no-unused-vars": "warn",
-      "no-console": ["warn", { allow: ["warn", "error"] }],
-      "prettier/prettier": "error",
+
     },
   },
   pluginJs.configs.recommended,
