@@ -18,6 +18,10 @@
 
 - [sqlite3](https://www.sqlite.org): Driver do banco de dados do SQLite.
 
+- [dotenv](https://www.npmjs.com/package/dotenv): Dotenv carrega variáveis ambiente de um arquivo .env ao `process.env` em aplicações Node.js.
+
+- [zod](https://zod.dev/): Biblioteca de validação de esquemas e dados, garantindo a segurança dos dados.
+
 ### Bibliotecas de desenvolvimento
 
 - [ESLint](https://eslint.org/): Ferramenta para análise de código, responsável por identificar erros e inconsistências, como variáveis não utilizadas ou não declaradas.
@@ -35,7 +39,7 @@ import type { Knex } from "knex";
 export const config: Knex.Config = {
   client: "sqlite",
   connection: {
-    filename: "./db/app.db",
+    filename: "db-url",
   },
   migrations: {
     extension: "ts",
@@ -47,7 +51,7 @@ export const config: Knex.Config = {
 export const knex = setupKnex(config);
 ```
 
-Configurações iniciais do banco de dados e da migrations. Nossa config precisa ser separada, pois ela será usada para criarmos a migration. Já o `knex`  será a conexão com o banco.
+Configurações iniciais do banco de dados e da migrations. Nossa config precisa ser separada, pois ela será usada para criarmos a migration. Já o `knex` será a conexão com o banco.
 
 ### Migration
 
@@ -86,9 +90,24 @@ export async function down(knex: Knex): Promise<void> {
 ```
 
 - up: A função up define o que será feito no banco, assim como os campos da tabela, a criação das tabelas, etc.
-    - - Executar a criação da tabela: `npm run knex -- migrate:latest`.
+  - - Executar a criação da tabela: `npm run knex -- migrate:latest`.
 - down: Faz exatamente o oposto do up, para caso precisemos refazer uma ação gerada pelo up. Exemplo, se for criado uma tabela, o down a deleta.
-    - Refazer a ação da migration executada pelo up: `npm run knex -- migrate:rollback`.
+  - Refazer a ação da migration executada pelo up: `npm run knex -- migrate:rollback`.
+
+### Configurando .env com zod
+
+Instalar o `zod` e configurar o `envSchema` e utilizá-lo dentro do nosso banco de dados.
+
+```ts
+import { z } from "zod";
+import 'dotenv/config'
+
+const envSchema = z.object({
+  DATABASE_URL: z.string(),
+});
+
+export const env = envSchema.parse(process.env);
+```
 
 ## Como rodar o projeto
 

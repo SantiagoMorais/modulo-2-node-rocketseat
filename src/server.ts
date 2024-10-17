@@ -1,8 +1,8 @@
 import fastify from "fastify";
 import { knex } from "./database.js";
+import { env } from "./env/index.ts";
 
 const app = fastify();
-const port = 3333;
 
 app.get("/hello", async () => {
   const transactions = await knex("transactions")
@@ -12,6 +12,6 @@ app.get("/hello", async () => {
   return transactions;
 });
 
-app.listen({ port }).then(() => {
-  console.log(`Server running on http://localhost:${port}`);
+app.listen({ port: env.PORT }).then(() => {
+  console.log(`Server running on http://localhost:${env.PORT}`);
 });
