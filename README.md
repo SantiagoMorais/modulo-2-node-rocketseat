@@ -59,16 +59,38 @@ import { config } from "./src/database.js";
 export default config;
 ```
 
-Antes de executarmos o comando para executar a migration, vamos criar um script para que possamos usar o `tsx` junto do `knex`
+Criar um script para usar o `tsx` junto do `knex`
 
 ```json
     "knex": "tsx ./node_modules/knex/bin/cli.js --knexfile=knexfile.ts"
 ```
 
-Agora é possível criar a migration com `npm run knex -- migrate:make create-documents`
+Agora é possível criar a migration com `npm run knex -- migrate:make create-transactions`
 O nome da migration precisa fazer sentido com qual alteração quero fazer no banco de dados.
+
+### Configurando a migrations
+
+```ts
+import type { Knex } from "knex";
+
+export async function up(knex: Knex): Promise<void> {
+  await knex.schema.createTable("transactions", (table) => {
+    table.uuid("id").primary();
+    table.text("title").notNullable();
+  });
+}
+
+export async function down(knex: Knex): Promise<void> {
+  await knex.schema.dropTable("transactions");
+}
+```
+
+- up: A função up define o que será feito no banco, assim como os campos da tabela, a criação das tabelas, etc.
+    - - Executar a criação da tabela: `npm run knex -- migrate:latest`
+- down: Faz exatamente o oposto do up, para caso precisemos refazer uma ação gerada pelo up. Exemplo, se for criado uma tabela, o down a deleta.
+    - Refazer a ação da migration executada pelo up: `npm run knex -- migrate:rollback`
 
 ## Como rodar o projeto
 
-1. Instalar as dependências com `npm install`
-2. Criar migração do banco de dados com `npx knex migrate:make create-documents`
+1. Instalar as dependências: `npm install`
+2. Executar a criação da tabela executando as migrations: `npm run knex -- migrate:latest`
