@@ -86,11 +86,12 @@ export async function down(knex: Knex): Promise<void> {
 ```
 
 - up: A função up define o que será feito no banco, assim como os campos da tabela, a criação das tabelas, etc.
-    - - Executar a criação da tabela: `npm run knex -- migrate:latest`
+    - - Executar a criação da tabela: `npm run knex -- migrate:latest`.
 - down: Faz exatamente o oposto do up, para caso precisemos refazer uma ação gerada pelo up. Exemplo, se for criado uma tabela, o down a deleta.
-    - Refazer a ação da migration executada pelo up: `npm run knex -- migrate:rollback`
+    - Refazer a ação da migration executada pelo up: `npm run knex -- migrate:rollback`.
 
 ## Como rodar o projeto
 
-1. Instalar as dependências: `npm install`
-2. Executar a criação da tabela executando as migrations: `npm run knex -- migrate:latest`
+1. Instalar as dependências: `npm install`.
+2. Executar a criação da tabela executando as migrations: `npm run knex -- migrate:latest`.
+3. Acessar o arquivo `.env.example`, criar o arquivo `.env` e configurá-lo de acordo com os exemplos.
