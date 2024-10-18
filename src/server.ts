@@ -9,11 +9,15 @@ import { createNewTransactionRoute } from "./routes/createNewTransactionRoute.ts
 import { listTransactionsRoute } from "./routes/listTransactionsRoute.ts";
 import { getTransactionRoute } from "./routes/getTransactionRoute.ts";
 import { accountSummaryRoute } from "./routes/accountSummaryRoute.ts";
+import cookie from "@fastify/cookie";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
+
+// preciso fazer o cadastro de cookies antes de listar as rotas
+app.register(cookie);
 
 app.register(createNewTransactionRoute);
 app.register(listTransactionsRoute);
