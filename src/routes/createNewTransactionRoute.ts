@@ -18,20 +18,13 @@ export const createNewTransactionRoute: FastifyPluginAsyncZod = async (app) => {
     async (req, res) => {
       const { amount, title, type } = req.body;
 
-      // estamos buscando dentro dos cookies da requisição, dentro destes metadados "invisíveis", se já existe uma session_id.
-
       let sessionId = req.cookies.session_id;
 
-      // Caso já exista, eu passo ela dentro da inserção dos dados.
       if (!sessionId) {
         sessionId = randomUUID();
 
-        // ai eu adiciono dentro do res.cookie um cookie com nome "sessionId", com o valor da nossa variável.
         res.cookie("sessionId", sessionId, {
-          // o path define quais rotas do nosso backend podem acessar esses cookies.
-          // Se eu adicionar só "/" qualquer rota pode utilizá-lo.
           path: "/",
-          // MaxAge define quanto tempo esse cookie deve funcionar no navegador do usuário, em milisegundos
           maxAge: 60 * 60 * 24 * 7, //7 days
         });
       }
