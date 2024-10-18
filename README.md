@@ -6,6 +6,12 @@
 - [Bibliotecas](#bibliotecas)
 - [Requisitos da aplicação](#requisitos-da-aplicação)
 - [Funcionalidades do projeto](#funcionalidades-do-projeto)
+  - [Criação do banco de dados utilizando `knex`](#criação-do-banco-de-dados-utilizando-knex)
+  - [Migration](#migration)
+  - [Configurando a migrations](#configurando-a-migrations)
+  - [Configurando .env com zod](#configurando-env-com-zod)
+- [Rotas](#rotas)
+  - [POST - criar nova transação](#post---criar-nova-transação)
 
 ## Imagens
 
@@ -23,6 +29,8 @@
 
 - [zod](https://zod.dev/): Biblioteca de validação de esquemas e dados, garantindo a segurança dos dados.
 
+- [Fastify-type-provider-zod](https://github.com/turkerdev/fastify-type-provider-zod): Integra o **Zod** com o **Fastify**, permitindo validar e tipar dados das requisições HTTP para evitar erros. Usa validações do Zod para definir e validar o `body`, `params`, `query` e `headers` das requisições.
+
 ### Bibliotecas de desenvolvimento
 
 - [ESLint](https://eslint.org/): Ferramenta para análise de código, responsável por identificar erros e inconsistências, como variáveis não utilizadas ou não declaradas.
@@ -30,7 +38,9 @@
 - [Prettier](https://prettier.io/): Ferramenta de formatação de código como indentação, espaçamento, uso de aspas simples ou duplas, etc, garantindo consistência no estilo do código.
 
 ## Requisitos da aplicação
+
 - **RF (Requisitos funcionais)**
+
   - [ ] O usuário deve poder criar uma nova transação.
   - [ ] O usuário deve poder obter um resumo da sua conta.
     - Valor total das somas e subtrações entre transações.
@@ -38,6 +48,7 @@
   - [ ] O usuário deve poder visualizar uma transação única
 
 - **RN (Regras de negócio)**
+
   - [ ] A transação pode ser do tipo .**crédito** que somará ao valor total, ou **débito** que irá subtrair.
   - [ ] Deve ser possível identificarmos o usuário entre as requisições;
   - [ ] O usuário só pode visualizar transações o qual ele criou.
@@ -116,7 +127,7 @@ Instalar o `zod` e configurar o `envSchema` e utilizá-lo dentro do nosso banco 
 
 ```ts
 import { z } from "zod";
-import 'dotenv/config'
+import "dotenv/config";
 
 const envSchema = z.object({
   DATABASE_URL: z.string(),
@@ -125,9 +136,35 @@ const envSchema = z.object({
 export const env = envSchema.parse(process.env);
 ```
 
-### Plugins do Fastify
+## Rotas
 
+### POST - criar nova transação:
 
+- Rota: `"/transactions"`
+- Método: `POST`
+- Objetivo: Criar uma nova transação e registrá-la no banco de dados
+
+**Dados a serem enviados no corpo da requisição**
+```json
+{
+  "title": "Freelancer",
+  "amount": 2300,
+  "type": "credit"
+}
+```
+
+**Tipagem dos dados a serem enviados**
+```ts
+    {
+      schema: {
+        body: z.object({
+          title: z.string().min(2).max(30),
+          amount: z.number().min(0.1),
+          type: z.enum(["credit", "debit"]),
+        }),
+      },
+    },
+```
 
 ## Como rodar o projeto
 
