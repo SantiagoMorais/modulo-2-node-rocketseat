@@ -43,7 +43,6 @@
   - [ ] O usuário só pode visualizar transações o qual ele criou.
 
 - **RNF (Requisitos não funcionais)**
-  - 
 
 ## Funcionalidades do projeto
 
@@ -125,6 +124,10 @@ const envSchema = z.object({
 
 export const env = envSchema.parse(process.env);
 ```
+
+### Plugins do Fastify
+
+
 
 ## Como rodar o projeto
 
