@@ -3,6 +3,7 @@ import pluginJs from "@eslint/js";
 import prettierPlugin from "eslint-plugin-prettier";
 import prettierConfig from "eslint-config-prettier";
 import typescriptPlugin from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
 
 export default [
   {
@@ -23,7 +24,13 @@ export default [
     rules: {
       "@typescript-eslint/no-unused-vars": "warn",
       "prettier/prettier": "error",
+      "no-unused-vars": "warn",
     },
+    extends: [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+    ],
   },
   pluginJs.configs.recommended,
   prettierConfig,
