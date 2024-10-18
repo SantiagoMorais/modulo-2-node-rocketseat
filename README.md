@@ -12,6 +12,8 @@
   - [Configurando .env com zod](#configurando-env-com-zod)
 - [Rotas](#rotas)
   - [POST - criar nova transação](#post---criar-nova-transação)
+  - [GET - listar todas as transações](#get---listar-todas-as-transações)
+  - [GET - Retornar uma transação pelo ID](#get---retornar-uma-transação-pelo-id)
 - [Como rodar o projeto](#como-rodar-o-projeto)
 - [Autor](#autor)
 
@@ -168,6 +170,56 @@ export const env = envSchema.parse(process.env);
         }),
       },
     },
+```
+
+### GET - listar todas as transações
+
+- Rota: `"/transactions"`
+- Método: `GET`
+- Objetivo: Listar as transações do usuário
+
+**Estrutura dos dados recebidos**
+
+```js
+{
+	"total": 2,
+	"transactions": [
+		{
+			"id": "0490f1b9-4a84-439b-9c29-bbd33fc76447",
+			"title": "Transação de teste",
+			"amount": 1000,
+			"created_at": "2024-10-17 22:14:05",
+			"session_id": null
+		},
+		{
+			"id": "80ce5a74-4642-4fc3-b78e-00e3504fbdcc",
+			"title": "Freelancer",
+			"amount": 2300,
+			"created_at": "2024-10-18 12:34:00",
+			"session_id": null
+		}
+	]
+}
+```
+
+### GET - retornar uma transação pelo ID
+
+- Rota: `"/transactions/:id"`
+- Método: `GET`
+- Objetivo: Retornar uma transação em específico pelo ID
+
+**Estrutura dos dados recebidos**
+
+```json
+{
+  "transaction": {
+    "id": "0490f1b9-4a84-439b-9c29-bbd33fc76447",
+    "title": "Transação de teste",
+    "amount": 1000,
+    "created_at": "2024-10-17 22:14:05",
+    "session_id": null
+  }
+}
 ```
 
 ## Como rodar o projeto
