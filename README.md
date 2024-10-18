@@ -12,6 +12,8 @@
   - [Configurando .env com zod](#configurando-env-com-zod)
 - [Rotas](#rotas)
   - [POST - criar nova transação](#post---criar-nova-transação)
+- [Como rodar o projeto](#como-rodar-o-projeto)
+- [Autor](#autor)
 
 ## Imagens
 
@@ -145,6 +147,7 @@ export const env = envSchema.parse(process.env);
 - Objetivo: Criar uma nova transação e registrá-la no banco de dados
 
 **Dados a serem enviados no corpo da requisição**
+
 ```json
 {
   "title": "Freelancer",
@@ -154,6 +157,7 @@ export const env = envSchema.parse(process.env);
 ```
 
 **Tipagem dos dados a serem enviados**
+
 ```ts
     {
       schema: {
@@ -171,3 +175,12 @@ export const env = envSchema.parse(process.env);
 1. Instalar as dependências: `npm install`.
 2. Executar a criação da tabela executando as migrations: `npm run knex -- migrate:latest`.
 3. Acessar o arquivo `.env.example`, criar o arquivo `.env` e configurá-lo de acordo com os exemplos.
+4. Inicializar o servidor com `npm run dev`.
+
+## Autor
+
+- GitHub - [Felipe Santiago Morais](https://github.com/SantiagoMorais)
+- Linkedin - [Felipe Santiago](https://www.linkedin.com/in/felipe-santiago-873025288/)
+- Instagram - [@felipe.santiago.morais](https://www.instagram.com/felipe.santiago.morais)
+- Email - <a href="mailto:contatofelipesantiago@gmail.com" target="blank">contatofelipesantiago@gmail.com</a>
+- <a href="https://api.whatsapp.com/send?phone=5531996951033&text=Hi%2C%20Felipe%21%20I%20got%20your%20contact%20from%20your%20portfolio.">Whatsapp</a>
