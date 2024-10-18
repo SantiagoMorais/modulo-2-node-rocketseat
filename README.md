@@ -14,6 +14,7 @@
   - [POST - criar nova transação](#post---criar-nova-transação)
   - [GET - listar todas as transações](#get---listar-todas-as-transações)
   - [GET - Retornar uma transação pelo ID](#get---retornar-uma-transação-pelo-id)
+  - [GET - Retornar resumo da conta](#get---retornar-resumo-da-conta)
 - [Como rodar o projeto](#como-rodar-o-projeto)
 - [Autor](#autor)
 
@@ -45,15 +46,15 @@
 
 - **RF (Requisitos funcionais)**
 
-  - [ ] O usuário deve poder criar uma nova transação.
+  - [ X ] O usuário deve poder criar uma nova transação.
   - [ ] O usuário deve poder obter um resumo da sua conta.
     - Valor total das somas e subtrações entre transações.
-  - [ ] O usuário deve poder listar todas as transações que já ocorreram.
-  - [ ] O usuário deve poder visualizar uma transação única
+  - [ X ] O usuário deve poder listar todas as transações que já ocorreram.
+  - [ X ] O usuário deve poder visualizar uma transação única
 
 - **RN (Regras de negócio)**
 
-  - [ ] A transação pode ser do tipo .**crédito** que somará ao valor total, ou **débito** que irá subtrair.
+  - [ X ] A transação pode ser do tipo .**crédito** que somará ao valor total, ou **débito** que irá subtrair.
   - [ ] Deve ser possível identificarmos o usuário entre as requisições;
   - [ ] O usuário só pode visualizar transações o qual ele criou.
 
@@ -218,6 +219,22 @@ export const env = envSchema.parse(process.env);
     "amount": 1000,
     "created_at": "2024-10-17 22:14:05",
     "session_id": null
+  }
+}
+```
+
+### GET - retornar resumo da conta
+
+- Rota: `"/transactions/summary"`
+- Método: `GET`
+- Objetivo: Retornar o resumo do saldo do usuário
+
+**Estrutura dos dados recebida**
+
+```json
+{
+  "summary": {
+    "amount": 2511
   }
 }
 ```
