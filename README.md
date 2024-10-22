@@ -246,7 +246,7 @@ export const env = envSchema.parse(process.env);
 1. Instalar as dependências: `npm install`.
 2. Executar a criação da tabela executando as migrations: `npm run knex -- migrate:latest`.
 3. Acessar o arquivo `.env.example`, criar o arquivo `.env` e configurá-lo de acordo com os exemplos.
-4. Inicializar o servidor com `npm run dev`.
+4. Inicializar o servidor com `npm run server`.
 
 ## Autor
 

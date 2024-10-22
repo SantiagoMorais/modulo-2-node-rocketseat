@@ -18,11 +18,11 @@ export const createNewTransactionRoute: FastifyPluginAsyncZod = async (app) => {
     async (req, res) => {
       const { amount, title, type } = req.body;
 
-      let sessionId = req.cookies.session_id;
+      let sessionId = req.cookies.sessionId;
 
       if (!sessionId) {
         sessionId = randomUUID();
-
+        
         res.cookie("sessionId", sessionId, {
           path: "/",
           maxAge: 60 * 60 * 24 * 7, //7 days

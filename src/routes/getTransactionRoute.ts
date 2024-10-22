@@ -1,6 +1,7 @@
 import { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import { knex } from "../database.ts";
 import { z } from "zod";
+import { checkSessionIdExists } from "../middlewares/check-session-id-exists.ts";
 
 export const getTransactionRoute: FastifyPluginAsyncZod = async (app) => {
   app.get(
@@ -11,11 +12,18 @@ export const getTransactionRoute: FastifyPluginAsyncZod = async (app) => {
           id: z.string().uuid(),
         }),
       },
+      preHandler: [checkSessionIdExists],
     },
     async (req, res) => {
       const { id } = req.params;
+      const sessionId = req.cookies.sessionId;
 
-      const transaction = await knex("transactions").where("id", id).first();
+      const transaction = await knex("transactions")
+        .where({
+          session_id: sessionId,
+          id,
+        })
+        .first();
 
       if (!transaction)
         return res

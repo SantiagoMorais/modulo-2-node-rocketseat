@@ -16,7 +16,6 @@ const app = fastify().withTypeProvider<ZodTypeProvider>();
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
-// preciso fazer o cadastro de cookies antes de listar as rotas
 app.register(cookie);
 
 app.register(createNewTransactionRoute);
