@@ -44,6 +44,12 @@
 
 - [Prettier](https://prettier.io/): Ferramenta de formatação de código como indentação, espaçamento, uso de aspas simples ou duplas, etc, garantindo consistência no estilo do código.
 
+- [Vitest](https://vitest.dev): Um framework de test nativo do vite, mas mais rápido que Jest. Apesar disso, a migração do Jest ao Vitest é simples, pois a sintaxe é extremamente similar.
+
+- [Supertest](https://www.npmjs.com/package/supertest): A motivação com este módulo é fornecer uma abstração de alto nível para testar HTTP, ao mesmo tempo que permite acessar a API de nível inferior fornecida pelo `superagent`. Ou seja, testar o servidor sem precisar rodá-lo em uma porta específica, evitando conflitos.
+
+- [@types/supertest](https://www.npmjs.com/package/@types/supertest): Vinculação do supertest ao Typescript, já que ele foi escrito exclusivamente com Javascript
+
 ## Requisitos da aplicação
 
 - **RF (Requisitos funcionais)**
