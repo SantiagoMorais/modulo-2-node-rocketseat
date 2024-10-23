@@ -28,8 +28,6 @@
 
 - [Knex](https://knexjs.org): **SQL query builder** utilizado para simplificar a linguagem sql. É um construtor de queries, que facilita a escrita do código usando javascript. Similar a um ORM.
 
-- [sqlite3](https://www.sqlite.org): Driver do banco de dados do SQLite.
-
 - [dotenv](https://www.npmjs.com/package/dotenv): Dotenv carrega variáveis ambiente de um arquivo .env ao `process.env` em aplicações Node.js.
 
 - [zod](https://zod.dev/): Biblioteca de validação de esquemas e dados, garantindo a segurança dos dados.
@@ -37,6 +35,8 @@
 - [Fastify-type-provider-zod](https://github.com/turkerdev/fastify-type-provider-zod): Integra o **Zod** com o **Fastify**, permitindo validar e tipar dados das requisições HTTP para evitar erros. Usa validações do Zod para definir e validar o `body`, `params`, `query` e `headers` das requisições.
 
 - [@fastify/cookie](https://github.com/fastify/fastify-cookie): Um plugin para o Fastify que adiciona suporte para ler e definir cookies.
+
+- [pg](https://node-postgres.com): Driver do banco de dados do PostgreSQL.
 
 ### Bibliotecas de desenvolvimento
 
@@ -51,6 +51,8 @@
 - [@types/supertest](https://www.npmjs.com/package/@types/supertest): Vinculação do supertest ao Typescript, já que ele foi escrito exclusivamente com Javascript
 
 - [tsup](https://tsup.egoist.dev): Ferramenta para otimizar projetos TypeScript, permitindo realizar o build (converter TS em JS) de forma eficiente. Além disso, assim como Vitest e TSX, ele utiliza o **esbuild**, que acelera processos e facilita o desenvolvimento com TypeScript de maneira moderna.
+
+- [sqlite3](https://www.sqlite.org): Driver do banco de dados do SQLite.
 
 ## Requisitos da aplicação
 
