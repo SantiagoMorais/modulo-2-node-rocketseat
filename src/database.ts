@@ -6,7 +6,7 @@ import { env } from "./env/index.ts";
 export const config: Knex.Config = {
   client: "sqlite",
   connection: {
-    filename: env.DATABASE_URL,
+    filename: env.NODE_ENV === "test" ? env.TEST_DATABASE_URL : env.DATABASE_URL,
   },
   migrations: {
     extension: "ts",
