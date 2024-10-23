@@ -50,6 +50,8 @@
 
 - [@types/supertest](https://www.npmjs.com/package/@types/supertest): Vinculação do supertest ao Typescript, já que ele foi escrito exclusivamente com Javascript
 
+- [tsup](https://tsup.egoist.dev): Ferramenta para otimizar projetos TypeScript, permitindo realizar o build (converter TS em JS) de forma eficiente. Além disso, assim como Vitest e TSX, ele utiliza o **esbuild**, que acelera processos e facilita o desenvolvimento com TypeScript de maneira moderna.
+
 ## Requisitos da aplicação
 
 - **RF (Requisitos funcionais)**

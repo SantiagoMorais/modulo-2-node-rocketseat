@@ -7,6 +7,7 @@ import tsParser from "@typescript-eslint/parser";
 
 export default [
   {
+    ignores: [".build/", ".node_modules/"],
     files: ["*.ts", "*.tsx"],
     languageOptions: {
       parser: tsParser,
@@ -26,12 +27,8 @@ export default [
       "prettier/prettier": "error",
       "no-unused-vars": "warn",
     },
-    extends: [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "prettier",
-    ],
   },
   pluginJs.configs.recommended,
   prettierConfig,
+  typescriptPlugin.configs.recommended
 ];
