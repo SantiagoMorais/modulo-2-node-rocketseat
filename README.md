@@ -1,4 +1,4 @@
-# API Rest Node.JS
+# API Rest Node.JS de Transações
 
 ## Sumário
 
@@ -59,7 +59,7 @@
 - **RF (Requisitos funcionais)**
 
   - [ X ] O usuário deve poder criar uma nova transação.
-  - [ ] O usuário deve poder obter um resumo da sua conta.
+  - [ X ] O usuário deve poder obter um resumo da sua conta.
     - Valor total das somas e subtrações entre transações.
   - [ X ] O usuário deve poder listar todas as transações que já ocorreram.
   - [ X ] O usuário deve poder visualizar uma transação única
@@ -67,8 +67,8 @@
 - **RN (Regras de negócio)**
 
   - [ X ] A transação pode ser do tipo .**crédito** que somará ao valor total, ou **débito** que irá subtrair.
-  - [ ] Deve ser possível identificarmos o usuário entre as requisições;
-  - [ ] O usuário só pode visualizar transações o qual ele criou.
+  - [ X ] Deve ser possível identificarmos o usuário entre as requisições;
+  - [ X ] O usuário só pode visualizar transações o qual ele criou.
 
 - **RNF (Requisitos não funcionais)**
 
