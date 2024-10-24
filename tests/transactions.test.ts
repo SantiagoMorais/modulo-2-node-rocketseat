@@ -18,7 +18,7 @@ describe("Transactions routes", () => {
   });
 
   it("should be able to create a new transaction", async () => {
-    request(app.server)
+    await request(app.server)
       .post("/transactions")
       .send({
         title: "new transaction",
